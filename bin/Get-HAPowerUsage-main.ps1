@@ -23,21 +23,21 @@ param (
     $frmSettings.ShowDialog()
 }
  
-[System.Windows.Forms.Form]  $frmMain =           New-Form                      -Width 790 -height 800 -header $("$sScript_Name - v$sScript_Version") -borderstyle FixedDialog -icon $sFile_ico -hide_maximizebox
+[System.Windows.Forms.Form]  $frmMain =           New-Form                      -Width 890 -height 800 -header $("$sScript_Name - v$sScript_Version") -borderstyle FixedDialog -icon $sFile_ico -hide_maximizebox
 
-                                                  New-Formlabel -x 1   -y 28 -width 300 -height 20 -ParentObject $frmMain -Text $htScript_config.$sLanguage_String.Label_PerDay   | Out-null
-                                                  New-Formlabel -x 385 -y 28 -width 300 -height 20 -ParentObject $frmMain -Text $htScript_config.$sLanguage_String.Label_PerMonth | Out-null
+                                                  New-Formlabel -x 1   -y 28 -width 400 -height 20 -ParentObject $frmMain -Text $htScript_config.$sLanguage_String.Label_PerDay   | Out-null
+                                                  New-Formlabel -x 485 -y 28 -width 300 -height 20 -ParentObject $frmMain -Text $htScript_config.$sLanguage_String.Label_PerMonth | Out-null
 
-[System.Windows.Forms.ListView]$lvUsagePerDay =   New-Formlistview -x 1   -y 50 -Width 380 -height 729 -ParentObject $frmMain -view "Details"
-[System.Windows.Forms.ListView]$lvUsagePerMonth = New-Formlistview -x 385 -y 50 -Width 380 -height 729 -ParentObject $frmMain -view "Details"
-                                                  Add-ListviewColumn -oListView $lvUsagePerDay   -Text $htScript_config.$sLanguage_String.ListviewColumn_date         -Width 100 -Silence
-                                                  Add-ListviewColumn -oListView $lvUsagePerDay   -Text $htScript_config.$sLanguage_String.ListviewColumn_starttime    -Width 50  -Silence
-                                                  Add-ListviewColumn -oListView $lvUsagePerDay   -Text $htScript_config.$sLanguage_String.ListviewColumn_stoptime     -Width 50  -Silence
-                                                  Add-ListviewColumn -oListView $lvUsagePerMonth -Text $htScript_config.$sLanguage_String.ListviewColumn_date         -Width 150 -Silence
+[System.Windows.Forms.ListView]$lvUsagePerDay =   New-Formlistview -x 1   -y 50 -Width 480 -height 705 -ParentObject $frmMain -view "Details" -Scrollable
+[System.Windows.Forms.ListView]$lvUsagePerMonth = New-Formlistview -x 485 -y 50 -Width 380 -height 705 -ParentObject $frmMain -view "Details" -Scrollable
+                                                  Add-ListviewColumn -oListView $lvUsagePerDay   -Text $htScript_config.$sLanguage_String.ListviewColumn_date         -Width 80  -Silence
+                                                  Add-ListviewColumn -oListView $lvUsagePerDay   -Text $htScript_config.$sLanguage_String.ListviewColumn_starttime    -Width 40  -Silence
+                                                  Add-ListviewColumn -oListView $lvUsagePerDay   -Text $htScript_config.$sLanguage_String.ListviewColumn_stoptime     -Width 40  -Silence
+                                                  Add-ListviewColumn -oListView $lvUsagePerMonth -Text $htScript_config.$sLanguage_String.ListviewColumn_Month        -Width 40  -Silence
                                                   Add-ListviewColumn -oListView $lvUsagePerDay   -Text $htScript_config.$sLanguage_String.ListviewColumn_powerUsage   -Width 100 -Silence
                                                   Add-ListviewColumn -oListView $lvUsagePerMonth -Text $htScript_config.$sLanguage_String.ListviewColumn_powerUsage   -Width 100 -Silence
-                                                  Add-ListviewColumn -oListView $lvUsagePerDay   -Text $htScript_config.$sLanguage_String.ListviewColumn_powerUnit    -Width 100 -Silence
-                                                  Add-ListviewColumn -oListView $lvUsagePerMonth -Text $htScript_config.$sLanguage_String.ListviewColumn_powerUnit    -Width 100 -Silence
+                                                  Add-ListviewColumn -oListView $lvUsagePerDay   -Text $htScript_config.$sLanguage_String.ListviewColumn_powerUnit    -Width 50  -Silence
+                                                  Add-ListviewColumn -oListView $lvUsagePerMonth -Text $htScript_config.$sLanguage_String.ListviewColumn_powerUnit    -Width 50  -Silence
                                                   Add-ListviewColumn -oListView $lvUsagePerDay   -Text $htScript_config.$sLanguage_String.ListviewColumn_powerCost    -Width 50  -Silence
                                                   Add-ListviewColumn -oListView $lvUsagePerMonth -Text $htScript_config.$sLanguage_String.ListviewColumn_powerCost    -Width 50  -Silence
                                                   Add-ListviewColumn -oListView $lvUsagePerDay   -Text $htScript_config.$sLanguage_String.ListviewColumn_amount_total -Width 50  -Silence

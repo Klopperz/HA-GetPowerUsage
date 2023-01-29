@@ -28,21 +28,15 @@ Function Get-DailyPowerUsage {
     [double]$start = $history[0].state
     [double]$end = $history[-1].state
     [double]$sum = $end-$start
-    $Header = 'Day','Start','End','Sum','Unit'
-    if (test-path "$path\$dateMonth-PowerConsumption.csv") {
-        $csvFile = Import-Csv -Path "$path\$dateMonth-PowerConsumption.csv" -Header $Header
-    } else {
-        $csvFile = @()
-    }
     Write-host "On $date we started with $start $units and ended with $end $units of $type. This means there was $sum $units of $type consumed."
     $csvFile += @{
         Day = $date
-        Start = $startDateTime.Split('T')[1]
-        End = $stopDateTime.Split('T')[1]
+        Start = $startDateTime.Split('T')[1].Split("%2")[0]
+        End = $stopDateTime.Split('T')[1].Split("%2")[0]
         Sum = $sum
         Unit = $units
     }
-    $csvFile | Export-Csv -Path "$path\$dateMonth-PowerConsumption.csv" -
+    $csvFile | Export-Csv -Path "$path\$dateMonth-PowerConsumption.csv" -Append
 
     return $null
 }

@@ -503,6 +503,7 @@ param(  [parameter(Mandatory=$true)][System.Int32]$x,
         [parameter(Mandatory=$false)][Switch]$Disabled,
         [parameter(Mandatory=$false)][System.String]$backgroundcolor,
         [parameter(Mandatory=$false)][ScriptBlock]$onclickscript,
+        [parameter(Mandatory=$false)][Switch]$Scrollable,
         [parameter(Mandatory=$false)][System.String]$Text,
         [parameter(Mandatory=$false)][System.String][ValidateSet("Details", "LargeIcon" ,"List","SmallIcon","Tile")]$View )
 
@@ -530,6 +531,10 @@ param(  [parameter(Mandatory=$true)][System.Int32]$x,
     {
         $oNewListView.FullRowSelect = $true
         $oNewListView.Add_MouseClick($onclickscript)
+    }
+    if ($Scrollable)
+    {
+        $oNewListView.Scrollable = $true
     }
     if ($View)
     {

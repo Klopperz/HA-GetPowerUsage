@@ -40,6 +40,7 @@ if (Test-Path $sFile_usersettings) {
     $haHost = $htUser_config.settings.hahost
     $socketName = $htUser_config.settings.socketname
 
+    Invoke-Command -ScriptBlock $refreshDays
     #start
     $frmMain.ShowDialog()
 }
